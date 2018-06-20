@@ -1,6 +1,8 @@
 pypy/
 # run `make clone`
 virtualenv/
+__pycache__/
 
 main-c
 *.pyc
+output.py
