@@ -1,0 +1,6 @@
+pypy/
+# run `make clone`
+virtualenv/
+
+main-c
+*.pyc
