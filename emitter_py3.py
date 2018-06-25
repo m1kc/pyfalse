@@ -12,7 +12,7 @@ def indent(s):
 
 
 def emit_program(el):
-	return readfile('emitter_header.py'), emit(el), readfile('emitter_footer.py')
+	return readfile('emitter_py3_header.py'), emit(el), readfile('emitter_py3_footer.py')
 
 def emit(el):
 	if isinstance(el, ast.Function):

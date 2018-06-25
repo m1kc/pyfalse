@@ -2,7 +2,7 @@
 
 import ast
 import parser
-import emitter
+import emitter_py3
 
 import sys
 import subprocess
@@ -41,13 +41,15 @@ def tests():
 		print("=>", i)
 		tree = parser.parse(i)
 		print("=>", tree)
-		h, body, f = emitter.emit_program(tree)
+		h, body, f = emitter_py3.emit_program(tree)
+		# h, body, f = emitter_rpy.emit_program(tree)
 		print('---\n' + body + '\n---')
 		source = "\n\n".join([h, body, f])
 		with open('output.py', 'w') as file:
 			file.write(source)
 		subprocess.run(['python3', 'output.py'], check=True)
 		print()
+
 
 def main():
 	if sys.argv[1] == '--tests':
@@ -56,7 +58,8 @@ def main():
 		with open(sys.argv[1], 'r') as file:
 			i = file.read()
 			tree = parser.parse(i)
-			h, body, f = emitter.emit_program(tree)
+			h, body, f = emitter_py3.emit_program(tree)
+			# h, body, f = emitter_rpy.emit_program(tree)
 			source = "\n\n".join([h, body, f])
 			with open('output.py', 'w') as file:
 				file.write(source)
