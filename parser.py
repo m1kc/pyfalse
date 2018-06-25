@@ -48,6 +48,6 @@ def parse(s):
 	fn_def = pp.Suppress(pp.Literal('[')) + code + pp.Suppress(pp.Literal(']'))
 	expr = pp.Or([opcode, number, varname, str_def, fn_def])
 	atom = pp.Or([expr])
-	code << pp.OneOrMore(atom)
+	code << pp.ZeroOrMore(atom)
 	code.setParseAction(lambda toks: ast.Function(toks))
 	return code.parseString(s)[0]
